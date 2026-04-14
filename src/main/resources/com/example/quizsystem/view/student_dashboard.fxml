@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            style="-fx-padding: 20;"
+            fx:controller="com.example.quizsystem.controller.StudentController">
+    <top>
+        <Label text="Student Dashboard"
+               style="-fx-font-size: 24px; -fx:font-weight:bold;"/>
+    </top>
+    <left>
+        <VBox spacing="20" style="-fx-padding:20;">
+            <Button text="Take Exam"
+                    prefWidth="200"
+                    style="-fx-font-size:14px;"
+                    onAction="#openExam"/>
+            <Button text="View Results"
+            prefWidth="200"
+            style="-fx-font-size:14px;"></Button>
+            <Button text="Logout"
+                    prefWidth="200"
+                    style="-fx-font-size:14px;"></Button>
+        </VBox>
+    </left>
+    <center>
+        <StackPane>
+            <Label text="Welcome Student!"
+                   style="-fx-font-size:18px;"></Label>
+        </StackPane>
+
+    </center>
+</BorderPane>

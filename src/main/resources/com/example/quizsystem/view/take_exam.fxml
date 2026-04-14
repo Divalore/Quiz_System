@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" alignment="CENTER"
+    xmlns:fx="http://javafx.com/fxml"
+fx:controller="com.example.quizsystem.controller.TakeExamController"
+style="-fx-padding: 20;">
+    <Label fx:id="questionLabel"
+    text="Question will appear here"
+    style="-fx-font-size: 18;"></Label>
+
+    <VBox spacing="10">
+        <RadioButton fx:id="opt1" toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="opt2" toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="opt3" toggleGroup="$group"></RadioButton>
+        <RadioButton fx:id="opt4" toggleGroup="$group"></RadioButton>
+    </VBox>
+    <Button text="Next" onAction="#handleNext"></Button>
+    <Button text="Submit Exam" onAction="#handleSubmit"></Button>
+</VBox>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml" style="-fx-padding:25;"
+        fx:controller="com.example.quizsystem.controller.CreateExamController">
+    <Label text="Create Exam" style="-fx-font-size: 20px; -fx-font-weight:bold;"></Label>
+    <TextField fx:id="examTitleField" promptText="Exam Title" prefWidth="300"></TextField>
+    <TextField fx:id="questionField" promptText="Question" prefWidth="300"></TextField>
+    <TextField fx:id="option1" promptText="Option 1" prefWidth="300"></TextField>
+    <TextField fx:id="option2" promptText="Option 2" prefWidth="300"></TextField>
+    <TextField fx:id="option3" promptText="Option 3" prefWidth="300"></TextField>
+    <TextField fx:id="option4" promptText="Option 4" prefWidth="300"></TextField>
+    <TextField fx:id="correctAnswer" promptText="Correct Answer" prefWidth="300"></TextField>
+    <Button text="Save Question"
+            onAction="#handleSave"
+            prefWidth="300"
+            style="-fx-font-size:14px;"></Button>
+</VBox>

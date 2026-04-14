@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.quizsystem.controller.DashboardController">
+    <top>
+        <Label text="Dashboard" style="-fx-font-size: 20px;" BorderPane.alignment="CENTER"></Label>
+    </top>
+    <center>
+        <VBox spacing="15" alignment="CENTER">
+            <Button text="Start Exam"></Button>
+            <Button text="View Results"></Button>
+            <Button text="Logout"></Button>
+        </VBox>
+    </center>
+</BorderPane>

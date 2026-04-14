@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://java.com/fxml"
+            fx:controller="com.example.quizsystem.controller.AdminController"
+            style="-fx-padding: 20;">
+
+    <top>
+        <Label text="Admin Dashboard"
+               style="fx-font-size: 20px;
+               -fx-font-weight:bold;"></Label>
+    </top>
+    <left>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <Button text="Create Exam" prefWidth="200" style="-fx-font-size:14px;" onAction="#openCreateExam"></Button>
+            <Button text="Manage Questions" prefWidth="200" style="-fx-font-size:14px;"></Button>
+            <Button text="View Results" prefWidth="200" style="-fx-font-size:14px;"></Button>
+        </VBox>
+    </left>
+</BorderPane>
