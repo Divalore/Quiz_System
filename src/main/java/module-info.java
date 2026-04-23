@@ -12,6 +12,7 @@ module com.example.quizsystem {
     requires com.almasb.fxgl.all;
     requires com.google.gson;
     requires java.desktop;
+    requires java.sql;
 
     opens com.example.quizsystem.controller to javafx.fxml;
     exports com.example.quizsystem;

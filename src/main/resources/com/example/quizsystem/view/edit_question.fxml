@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER"
+xmlns:fx="http://javafx.com/fxml"
+fx:controller="com.example.quizsystem.controller.EditQuestionController">
+    <Label text="Edit Question" style="-fx-font-size: 20px; -fx-font-weight:bold;"> </Label>
+    <TextField fx:id="questionField" promptText="Question"></TextField>
+    <TextField fx:id="opt1" promptText="Option 1"></TextField>
+    <TextField fx:id="opt2" promptText="Option 2"></TextField>
+    <TextField fx:id="opt3" promptText="Option 3"></TextField>
+    <TextField fx:id="opt4" promptText="Option 4"></TextField>
+    <ComboBox fx:id="correctAnsweBox" promptText="Select Correct Answer"></ComboBox>
+    <Button text="Update Question" onAction="#handleUpdate"></Button>
+    <Button text="Back" onAction="#handleBack"></Button>
+
+</VBox>

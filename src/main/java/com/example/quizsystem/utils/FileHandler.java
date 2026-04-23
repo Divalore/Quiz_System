@@ -16,7 +16,7 @@ public class FileHandler {
     private static final String FILE_PATH="questions.json";
     public static  void saveQuestion(Question question){
         Gson gson= new Gson();
-        List<Question> questions=loadQuestion();
+        List<Question> questions=loadQuestions();
         if(questions==null){
             questions=new ArrayList<>();
         }
@@ -30,7 +30,17 @@ public class FileHandler {
         }
 
     }
-    public static List<Question> loadQuestion(){
+    public static void saveAllQuestions(List<Question> questions){
+        try (Writer writer= new FileWriter(FILE_PATH)){
+            Gson gson= new Gson();
+            gson.toJson(questions,writer);
+
+        }
+         catch (Exception e){
+            e.printStackTrace();
+         }
+    }
+    public static List<Question> loadQuestions(){
         Gson gson= new Gson();
         try(Reader reader= new FileReader(FILE_PATH)){
             Type listType= new TypeToken<List<Question>>(){}.getType();

@@ -18,7 +18,7 @@
     <left>
         <VBox spacing="10" style="-fx-padding: 20;">
             <Button text="Create Exam" prefWidth="200" style="-fx-font-size:14px;" onAction="#openCreateExam"></Button>
-            <Button text="Manage Questions" prefWidth="200" style="-fx-font-size:14px;"></Button>
+            <Button text="Manage Questions" onAction="#openManageQuestions" prefWidth="200" style="-fx-font-size:14px;"></Button>
             <Button text="View Results" prefWidth="200" style="-fx-font-size:14px;"></Button>
         </VBox>
     </left>

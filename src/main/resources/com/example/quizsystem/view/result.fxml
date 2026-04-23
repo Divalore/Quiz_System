@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20"
+        xmlns:fx="http://javafx.com/fxml"
+fx:controller="com.example.quizsystem.controller.ResultController"
+style="-fx-padding:30;">
+
+    <Label text="Exam Result"
+    style="-fx-font-size: 26px; -fx0font-weight:bold;"></Label>
+    <Label fx:id="scoreLabel"
+    text="Your score will appear here"
+    style="-fx-font-size:20px;"></Label>
+    <Button text="Back to Dashboard"
+    onAction="#goBack"
+    style="-fx-font-size:14px;"></Button>
+</VBox>

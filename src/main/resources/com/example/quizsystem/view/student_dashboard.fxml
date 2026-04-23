@@ -11,7 +11,7 @@
             fx:controller="com.example.quizsystem.controller.StudentController">
     <top>
         <Label text="Student Dashboard"
-               style="-fx-font-size: 24px; -fx:font-weight:bold;"/>
+               style="-fx-font-size: 24px; -fx-font-weight:bold;"/>
     </top>
     <left>
         <VBox spacing="20" style="-fx-padding:20;">
