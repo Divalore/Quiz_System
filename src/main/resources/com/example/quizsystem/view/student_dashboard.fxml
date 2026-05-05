@@ -1,37 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-            style="-fx-padding: 20;"
-            fx:controller="com.example.quizsystem.controller.StudentController">
-    <top>
-        <Label text="Student Dashboard"
-               style="-fx-font-size: 24px; -fx-font-weight:bold;"/>
-    </top>
+<BorderPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../style/app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quizsystem.controller.StudentController">
     <left>
-        <VBox spacing="20" style="-fx-padding:20;">
-            <Button text="Take Exam"
-                    prefWidth="200"
-                    style="-fx-font-size:14px;"
-                    onAction="#openExam"/>
-            <Button text="View Results"
-            prefWidth="200"
-            style="-fx-font-size:14px;"></Button>
-            <Button text="Logout"
-                    prefWidth="200"
-                    style="-fx-font-size:14px;"></Button>
+        <VBox prefHeight="800.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: #1f2937;" BorderPane.alignment="CENTER">
+            <children>
+                <Label style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 24px; -fx-padding: 20 0 30 20;" text="Student Menu" />
+                <Button fx:id="btnTakeExam" mnemonicParsing="false" onAction="#showDashboard" prefHeight="45.0" prefWidth="250.0" styleClass="nav-btn, nav-btn-active" text="Take Exam" />
+                <Button fx:id="btnViewResults" mnemonicParsing="false" onAction="#showResults" prefHeight="45.0" prefWidth="250.0" styleClass="nav-btn" text="View Results" />
+                <Button fx:id="btnProfileSettings" mnemonicParsing="false" onAction="#showProfileSettings" prefHeight="45.0" prefWidth="250.0" styleClass="nav-btn" text="Profile Settings" />
+                <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                <Button mnemonicParsing="false" onAction="#handleLogout" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #ef4444; -fx-font-size: 14px; -fx-cursor: hand;" text="Logout" />
+            </children>
         </VBox>
     </left>
     <center>
-        <StackPane>
-            <Label text="Welcome Student!"
-                   style="-fx-font-size:18px;"></Label>
+        <StackPane fx:id="contentArea" style="-fx-background-color: #f3f4f6;" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane fx:id="dashboardPane">
+                    <children>
+                        <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Label fx:id="welcomeLabel" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #1f2937;" text="Welcome Student!" />
+                                <Label style="-fx-font-size: 18px; -fx-text-fill: #6b7280;" text="Enter your Exam Code below to begin." />
+                                <HBox alignment="CENTER" spacing="10.0">
+                                    <children>
+                                        <TextField fx:id="examCodeField" prefHeight="45.0" prefWidth="300.0" promptText="Exam Code" style="-fx-font-size: 18px;" />
+                                        <Button mnemonicParsing="false" onAction="#openExam" prefHeight="45.0" prefWidth="100.0" styleClass="btn-primary" text="Start" />
+                                    </children>
+                                </HBox>
+                                <Label fx:id="statusLabel" textFill="#ef4444" wrapText="true" />
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </children>
         </StackPane>
-
     </center>
 </BorderPane>

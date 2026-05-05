@@ -1,22 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<VBox spacing="10" alignment="CENTER"
-xmlns:fx="http://javafx.com/fxml"
-fx:controller="com.example.quizsystem.controller.EditQuestionController">
-    <Label text="Edit Question" style="-fx-font-size: 20px; -fx-font-weight:bold;"> </Label>
-    <TextField fx:id="questionField" promptText="Question"></TextField>
-    <TextField fx:id="opt1" promptText="Option 1"></TextField>
-    <TextField fx:id="opt2" promptText="Option 2"></TextField>
-    <TextField fx:id="opt3" promptText="Option 3"></TextField>
-    <TextField fx:id="opt4" promptText="Option 4"></TextField>
-    <ComboBox fx:id="correctAnsweBox" promptText="Select Correct Answer"></ComboBox>
-    <Button text="Update Question" onAction="#handleUpdate"></Button>
-    <Button text="Back" onAction="#handleBack"></Button>
-
+<VBox alignment="CENTER" spacing="15.0" styleClass="card" stylesheets="@../style/app.css" 
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.example.quizsystem.controller.EditQuestionController"
+      prefWidth="600.0">
+    <children>
+        <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Edit Question" textFill="#1f2937" />
+        
+        <VBox spacing="10.0">
+            <children>
+                <Label text="Question Content:" style="-fx-font-weight: bold;" />
+                <TextField fx:id="questionContentField" promptText="Question Content" />
+                
+                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Question Type:" style="-fx-font-weight: bold; -fx-min-width: 100;" />
+                        <ComboBox fx:id="questionTypeBox" prefWidth="180.0" onAction="#handleTypeChange" style="-fx-pref-height: 35;" />
+                        <Label text="Points:" style="-fx-font-weight: bold; -fx-min-width: 60;" />
+                        <TextField fx:id="pointsField" promptText="1" prefWidth="80.0" style="-fx-pref-height: 35;" />
+                    </children>
+                </HBox>
+                
+                <VBox fx:id="mcqFieldsContainer" spacing="10.0">
+                    <children>
+                        <HBox spacing="10.0">
+                            <children>
+                                <TextField fx:id="optionAField" promptText="Option A" HBox.hgrow="ALWAYS" />
+                                <TextField fx:id="optionBField" promptText="Option B" HBox.hgrow="ALWAYS" />
+                            </children>
+                        </HBox>
+                        <HBox spacing="10.0">
+                            <children>
+                                <TextField fx:id="optionCField" promptText="Option C" HBox.hgrow="ALWAYS" />
+                                <TextField fx:id="optionDField" promptText="Option D" HBox.hgrow="ALWAYS" />
+                            </children>
+                        </HBox>
+                        <ComboBox fx:id="correctAnswerBox" promptText="Select Correct Answer" prefWidth="200.0" />
+                    </children>
+                </VBox>
+                
+                <HBox spacing="15.0" alignment="CENTER">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#handleUpdate" styleClass="btn-primary" text="Update Question" prefWidth="150" />
+                        <Button mnemonicParsing="false" onAction="#handleCancel" styleClass="btn-secondary" text="Cancel" prefWidth="150" />
+                    </children>
+                </HBox>
+                <Label fx:id="statusLabel" />
+            </children>
+        </VBox>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
 </VBox>

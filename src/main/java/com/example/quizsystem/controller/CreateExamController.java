@@ -1,82 +1,84 @@
 package com.example.quizsystem.controller;
 
-import com.example.quizsystem.service.QuestionService;
+import com.example.quizsystem.utils.DatabaseManager;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ComboBox;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.Random;
 
 public class CreateExamController {
-    @FXML private TextField examTitleField;
-    @FXML private TextField questionField;
-    @FXML private TextField option1;
-    @FXML private TextField option2;
-    @FXML private TextField option3;
-    @FXML private TextField option4;
+
+    @FXML private TextField classNameField;
+    @FXML private TextField subjectNameField;
+    @FXML private TextField durationField;
+    @FXML private CheckBox kahootModeCheckBox;
+    @FXML private Label statusLabel;
 
     @FXML
-    private void handleSave(){
-        if(
-                examTitleField.getText().isEmpty()||
-                        questionField.getText().isEmpty()||
-                        option1.getText().isEmpty()||
-                        option2.getText().isEmpty()||
-                        option3.getText().isEmpty()||
-                        option4.getText().isEmpty()||
-                        correctAnswerBox.getValue() == null
-        ){
-            showAlert("Error❌","🚨Please fill all fields!!!");
+    void handleSaveExam(ActionEvent event) {
+        String className = classNameField.getText().trim();
+        String subjectName = subjectNameField.getText().trim();
+        String durationStr = durationField.getText().trim();
+
+        if (className.isEmpty() || subjectName.isEmpty() || durationStr.isEmpty()) {
+            showError("Please fill all fields.");
             return;
         }
-        String examTitle = examTitleField.getText();
-        String question= questionField.getText();
 
-        String opt1=option1.getText();
-        String opt2= option2.getText();
-        String opt3=option3.getText();
-        String opt4=option4.getText();
-        String correct= correctAnswerBox.getValue();
+        int duration;
+        try {
+            duration = Integer.parseInt(durationStr);
+        } catch (NumberFormatException e) {
+            showError("Duration must be a valid number.");
+            return;
+        }
 
-        com.example.quizsystem.model.Question q=
-                new com.example.quizsystem.model.Question(examTitle,question,
-                        opt1,opt2,opt3,opt4,correct
-                );
+        String examCode = generateExamCode();
+        String sql = "INSERT INTO exams (className, subjectName, durationMinutes, examCode, isKahoot) VALUES (?, ?, ?, ?, ?)";
 
-        QuestionService service= new QuestionService();
-        service.saveQuestion(q);
-        showAlert("Success✅","Question saved successfully✅");
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-        examTitleField.clear();
-        questionField.clear();
-        option1.clear();
-        option2.clear();
-        option3.clear();
-        option4.clear();
-        correctAnswerBox.setValue(null);
+            stmt.setString(1, className);
+            stmt.setString(2, subjectName);
+            stmt.setInt(3, duration);
+            stmt.setString(4, examCode);
+            stmt.setInt(5, kahootModeCheckBox.isSelected() ? 1 : 0);
+            stmt.executeUpdate();
 
-//        System.out.println("Exam: " + examTitle);
-//        System.out.println("Q:"+ question);
-//        System.out.println(opt1 +", "+ opt2 +", "+ opt3 +", " + opt4);
-//        System.out.println("Correct: "+correct);
-//        System.out.println("Saved Successfully!");
+            showSuccess("Exam created! Code: " + examCode);
+            clearForm();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showError("Error: Could not create exam. The code might already exist.");
+        }
     }
-    @FXML
-    private ComboBox<String> correctAnswerBox;
 
-    @FXML
-    public void initialize(){
-     correctAnswerBox.getItems().addAll(
-             "Option 1",
-             "Option 2",
-             "Option 3",
-             "Option 4"
-     );
+    private String generateExamCode() {
+        int code = 100000 + new Random().nextInt(900000);
+        return String.valueOf(code);
     }
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+
+    private void clearForm() {
+        classNameField.clear();
+        subjectNameField.clear();
+        durationField.clear();
+        kahootModeCheckBox.setSelected(false);
+    }
+
+    private void showError(String message) {
+        statusLabel.setText(message);
+        statusLabel.setStyle("-fx-text-fill: #ef4444");
+    }
+
+    private void showSuccess(String message) {
+        statusLabel.setText(message);
+        statusLabel.setStyle("-fx-text-fill: #10b981");
     }
 }

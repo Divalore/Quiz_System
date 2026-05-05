@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quizsystem.controller.AdminViewExamsController">
+    <children>
+        <VBox spacing="20" styleClass="card" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="30.0">
+            <children>
+                <Label styleClass="title" text="All Created Exams" textFill="#1f2937" />
+                
+                <TableView fx:id="examsTable" VBox.vgrow="ALWAYS" style="-fx-font-size: 14px;">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                        <TableColumn fx:id="colClass" text="Class" prefWidth="150" />
+                        <TableColumn fx:id="colSubject" text="Subject" prefWidth="150" />
+                        <TableColumn fx:id="colDuration" text="Duration (Mins)" prefWidth="120" />
+                        <TableColumn fx:id="colCode" text="Exam Code" prefWidth="150" />
+                        <TableColumn fx:id="colAction" text="Actions" prefWidth="150" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quizsystem.controller.AdminViewResultsController">
+    <children>
+        <VBox spacing="20" styleClass="card" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="30.0">
+            <children>
+                <Label styleClass="title" text="Student Results" textFill="#1f2937" />
+                
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <children>
+                        <TextField fx:id="searchField" promptText="Search Name/ID..." prefWidth="200" style="-fx-pref-height: 35;" />
+                        <ComboBox fx:id="classFilter" promptText="Class" prefWidth="150" style="-fx-pref-height: 35;" />
+                        <ComboBox fx:id="subjectFilter" promptText="Subject" prefWidth="150" style="-fx-pref-height: 35;" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button text="Export CSV" onAction="#exportToCSV" styleClass="btn-primary" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-pref-height: 40; -fx-min-width: 120;" />
+                    </children>
+                </HBox>
+                
+                <TableView fx:id="resultsTable" VBox.vgrow="ALWAYS" style="-fx-font-size: 14px;">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                        <TableColumn fx:id="colStudent" text="Student Name" prefWidth="150" />
+                        <TableColumn fx:id="colClass" text="Class" prefWidth="80" />
+                        <TableColumn fx:id="colExam" text="Exam Code" prefWidth="100" />
+                        <TableColumn fx:id="colSubject" text="Subject" prefWidth="120" />
+                        <TableColumn fx:id="colScore" text="Score" prefWidth="60" />
+                        <TableColumn fx:id="colTotal" text="Total" prefWidth="60" />
+                        <TableColumn fx:id="colPercentage" text="Percentage" prefWidth="80" />
+                        <TableColumn fx:id="colStatus" text="Status" prefWidth="100" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

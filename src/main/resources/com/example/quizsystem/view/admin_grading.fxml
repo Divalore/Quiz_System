@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quizsystem.controller.AdminGradingController">
+    <children>
+        <HBox spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+            <children>
+                <!-- Pending List -->
+                <VBox spacing="10.0" prefWidth="350.0" styleClass="card">
+                    <children>
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Pending Grading" />
+                        <ListView fx:id="pendingListView" VBox.vgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#refreshList" text="Refresh" styleClass="btn-secondary" />
+                    </children>
+                </VBox>
+                
+                <!-- Grading Area -->
+                <VBox spacing="20.0" HBox.hgrow="ALWAYS" styleClass="card">
+                    <children>
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Grading Details" />
+                        
+                        <VBox fx:id="gradingDetailPane" spacing="15.0" visible="false">
+                            <children>
+                                <Label text="Question:" textFill="#6b7280" />
+                                <Label fx:id="questionLabel" text="Question content here..." wrapText="true">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                
+                                <Label text="Student's Answer:" textFill="#6b7280" />
+                                <ScrollPane fitToWidth="true" prefHeight="150.0">
+                                    <content>
+                                        <Label fx:id="answerLabel" text="Student's answer text..." wrapText="true" style="-fx-padding: 10;">
+                                            <font>
+                                                <Font name="System Italic" size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </content>
+                                </ScrollPane>
+                                
+                                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                    <children>
+                                        <Label text="Assign Points:" />
+                                        <TextField fx:id="pointsField" prefWidth="80.0" promptText="0" />
+                                        <Label text="(Whole numbers only)" textFill="#9ca3af" />
+                                    </children>
+                                </HBox>
+                                
+                                <Button mnemonicParsing="false" onAction="#submitGrade" styleClass="btn-primary" text="Submit Grade" />
+                                <Label fx:id="statusLabel" />
+                            </children>
+                        </VBox>
+                        
+                        <VBox fx:id="noSelectionPane" alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Label text="Select a pending answer to start grading" textFill="#9ca3af" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

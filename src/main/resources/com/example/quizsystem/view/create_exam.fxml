@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox spacing="10" alignment="CENTER"
-      xmlns:fx="http://javafx.com/fxml" style="-fx-padding:25;"
-        fx:controller="com.example.quizsystem.controller.CreateExamController">
-    <Label text="Create Exam" style="-fx-font-size: 20px; -fx-font-weight:bold;"></Label>
-    <TextField fx:id="examTitleField" promptText="Exam Title" prefWidth="300"></TextField>
-    <TextField fx:id="questionField" promptText="Question" prefWidth="300"></TextField>
-    <TextField fx:id="option1" promptText="Option 1" prefWidth="300"></TextField>
-    <TextField fx:id="option2" promptText="Option 2" prefWidth="300"></TextField>
-    <TextField fx:id="option3" promptText="Option 3" prefWidth="300"></TextField>
-    <TextField fx:id="option4" promptText="Option 4" prefWidth="300"></TextField>
-    <ComboBox fx:id="correctAnswerBox"
-              promptText="Select Correct Answer"
-              prefWidth="300"></ComboBox>
-    <Button text="Save Question"
-            onAction="#handleSave"
-            prefWidth="300"
-            style="-fx-font-size:14px;"></Button>
+<VBox alignment="CENTER" spacing="20.0" styleClass="card" stylesheets="@../style/app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quizsystem.controller.CreateExamController">
+   <children>
+      <Label styleClass="title" text="Create New Exam" textFill="#1f2937">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="classNameField" promptText="Class Name (e.g. Grade 10)" style="-fx-pref-width: 300; -fx-pref-height: 35;" />
+      <TextField fx:id="subjectNameField" promptText="Subject Name (e.g. Mathematics)" style="-fx-pref-width: 300; -fx-pref-height: 35;" />
+      <TextField fx:id="durationField" promptText="Duration in Minutes" style="-fx-pref-width: 300; -fx-pref-height: 35;" />
+      
+      <CheckBox fx:id="kahootModeCheckBox" text="Enable Kahoot Mode (Real-time Feedback)" style="-fx-font-weight: bold; -fx-text-fill: #374151;" />
+      
+      <Label fx:id="statusLabel" textFill="#10b981" />
+      <Button mnemonicParsing="false" onAction="#handleSaveExam" prefWidth="300.0" styleClass="btn-primary" text="Save &amp; Generate Code" />
+   </children>
+   <padding>
+      <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+   </padding>
 </VBox>

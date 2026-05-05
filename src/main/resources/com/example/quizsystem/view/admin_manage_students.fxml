@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quizsystem.controller.AdminManageStudentsController">
+    <children>
+        <VBox spacing="20" styleClass="card" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="30.0">
+            <children>
+                <Label styleClass="title" text="Registered Students" textFill="#1f2937" />
+                
+                <HBox spacing="10">
+                    <TextField fx:id="searchField" promptText="Search by ID, Name, or Email..." prefWidth="300" style="-fx-pref-height: 40;" />
+                </HBox>
+                
+                <TableView fx:id="studentsTable" VBox.vgrow="ALWAYS" style="-fx-font-size: 14px;">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                        <TableColumn fx:id="colFirst" text="First Name" prefWidth="120" />
+                        <TableColumn fx:id="colLast" text="Last Name" prefWidth="120" />
+                        <TableColumn fx:id="colClass" text="Class" prefWidth="100" />
+                        <TableColumn fx:id="colEmail" text="Email" prefWidth="180" />
+                        <TableColumn fx:id="colGender" text="Gender" prefWidth="80" />
+                        <TableColumn fx:id="colParent" text="Parent Name" prefWidth="150" />
+                        <TableColumn fx:id="colPassword" text="Password" prefWidth="100" />
+                        <TableColumn fx:id="colAction" text="Actions" prefWidth="80" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

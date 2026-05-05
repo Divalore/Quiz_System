@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="980.0" style="-fx-background-color: #f3f4f6;" stylesheets="@../style/app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quizsystem.controller.StudentViewResultsController">
+   <children>
+      <VBox layoutX="40.0" layoutY="30.0" prefHeight="700.0" prefWidth="900.0" spacing="20.0" styleClass="card" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <Label styleClass="title" text="My Exam Results" textFill="#1f2937">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TableView fx:id="resultsTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="colExam" prefWidth="120.0" text="Exam Code" />
+                  <TableColumn fx:id="colSubject" prefWidth="150.0" text="Subject" />
+                  <TableColumn fx:id="colScore" prefWidth="100.0" text="Score" />
+                  <TableColumn fx:id="colTotal" prefWidth="150.0" text="Total Questions" />
+                  <TableColumn fx:id="colPercentage" prefWidth="120.0" text="Percentage" />
+                  <TableColumn fx:id="colStatus" prefWidth="120.0" text="Status" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

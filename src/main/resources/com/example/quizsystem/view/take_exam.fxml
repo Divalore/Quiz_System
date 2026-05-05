@@ -1,32 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox spacing="15" alignment="CENTER"
-    xmlns:fx="http://javafx.com/fxml"
-fx:controller="com.example.quizsystem.controller.TakeExamController"
-style="-fx-padding: 20;">
-    <Label fx:id="timerLabel"
-           text="Time :60"
-           style="-fx-font-size:16px; -fx-text-fill:red;"></Label>
-    <Label fx:id="questionLabel"
-    text="Question will appear here"
-    style="-fx-font-size: 18;"></Label>
-    <Label fx:id="progressLabel" text="Question 1/10"
-           style="-fx-font-size: 17px; -fx-font-weight:bold;">
-    </Label>
+<?import javafx.scene.control.TextArea?>
 
-
-    <VBox spacing="10">
-        <RadioButton fx:id="opt1" toggleGroup="$group"></RadioButton>
-        <RadioButton fx:id="opt2" toggleGroup="$group"></RadioButton>
-        <RadioButton fx:id="opt3" toggleGroup="$group"></RadioButton>
-        <RadioButton fx:id="opt4" toggleGroup="$group"></RadioButton>
-    </VBox>
-    <Button fx:id="nextBtn" text="Next" onAction="#handleNext" disable="true"></Button>
-    <Button text="Submit Exam" onAction="#handleSubmit"></Button>
-</VBox>
+<BorderPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../style/app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quizsystem.controller.TakeExamController">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" style="-fx-background-color: #1f2937;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="examTitleLabel" text="Active Exam" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Label>
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Time Remaining: " textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="timerLabel" text="00:00:00" textFill="#ef4444">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" spacing="20.0" style="-fx-padding: 40; -fx-background-color: #f3f4f6;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Label fx:id="progressLabel" text="Question 1 of 10" textFill="#6b7280">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox prefWidth="800.0" spacing="30.0" styleClass="card" VBox.vgrow="NEVER">
+               <children>
+                  <Label fx:id="questionLabel" text="Question will appear here" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <fx:define>
+                      <ToggleGroup fx:id="optionsGroup" />
+                  </fx:define>
+                  <VBox fx:id="mcqOptionsContainer" spacing="15.0">
+                     <children>
+                        <RadioButton fx:id="opt1" mnemonicParsing="false" text="Option A" toggleGroup="$optionsGroup" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="opt2" mnemonicParsing="false" text="Option B" toggleGroup="$optionsGroup" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="opt3" mnemonicParsing="false" text="Option C" toggleGroup="$optionsGroup" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="opt4" mnemonicParsing="false" text="Option D" toggleGroup="$optionsGroup" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <TextArea fx:id="writtenAnswerArea" prefHeight="150.0" promptText="Type your answer here..." visible="false" wrapText="true">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <VBox fx:id="feedbackContainer" alignment="CENTER" managed="false" spacing="10.0" style="-fx-padding: 15; -fx-background-radius: 10;" visible="false">
+                     <children>
+                        <Label fx:id="feedbackLabel" text="Correct!" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                        <Label fx:id="feedbackDetailLabel" text="The correct answer was A" style="-fx-font-size: 16px;" />
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="100.0" right="100.0" />
+               </VBox.margin>
+            </VBox>
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button fx:id="prevBtn" managed="false" mnemonicParsing="false" onAction="#handlePrev" prefHeight="40.0" prefWidth="120.0" styleClass="btn-secondary" text="Previous" visible="false" />
+                  <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#handleNext" prefHeight="40.0" prefWidth="120.0" styleClass="btn-primary" text="Next" />
+                  <Button fx:id="continueBtn" managed="false" mnemonicParsing="false" onAction="#handleContinue" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-background-radius: 8;" text="Continue" visible="false" />
+                  <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 8;" text="Submit Exam" visible="false" />
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

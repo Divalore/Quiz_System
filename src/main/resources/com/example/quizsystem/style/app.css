@@ -1,0 +1,77 @@
+.root{
+-fx-background-color: #f4f6f8;
+}
+.card{
+-fx-background-color: white;
+-fx-background-radius: 12;
+-fx-padding: 25;
+-fx-effect:dropshadow(gaussian, rgba(0,0,0,0.1),10,0,0,4);
+}
+
+.title{
+-fx-font-size: 24px;
+-fx-font-weight: bold;
+}
+.text-field, .combo-box{
+-fx-pref-height: 40;
+-fx-pref-width: 400;
+-fx-background-radius: 8;
+}
+
+.btn-primary{
+-fx-background-color: #2563eb;
+-fx-text-fill:white;
+-fx-background-radius: 8;
+-fx-pref-width:200;
+-fx-pref-height:40;
+}
+
+.btn-primary:hover{
+-fx-background-color: #1e4ed8;
+}
+.btn-secondary{
+-fx-background-color: #e5e7eb;
+-fx-background-radius:8;
+-fx-pref-width: 200;
+-fx-pref-height:40;
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 0 0 0 20;
+    -fx-alignment: BASELINE_LEFT;
+}
+
+.nav-btn:hover {
+    -fx-background-color: #374151;
+}
+
+.nav-btn-active {
+    -fx-background-color: #3b82f6;
+    -fx-border-color: transparent transparent transparent #60a5fa;
+    -fx-border-width: 0 0 0 4;
+}
+
+/* Analytics Styles */
+.chart-pie {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.chart-pie-label {
+    -fx-fill: #374151;
+    -fx-font-size: 12px;
+}
+
+.default-color0.chart-pie { -fx-pie-color: #ef4444; } /* Fail */
+.default-color1.chart-pie { -fx-pie-color: #3b82f6; } /* Pass */
+.default-color2.chart-pie { -fx-pie-color: #10b981; } /* Excellent */
+
+.chart-bar {
+    -fx-bar-fill: #3b82f6;
+}
+.chart-content {
+    -fx-padding: 10px;
+}
