@@ -47,7 +47,6 @@ public class AdminViewExamsController {
         colDuration.setCellValueFactory(new PropertyValueFactory<>("durationMinutes"));
         colCode.setCellValueFactory(new PropertyValueFactory<>("examCode"));
 
-        // Make exam code selectable/copyable
         colCode.setCellFactory(tc -> new TableCell<>() {
             private final TextField tf = new TextField();
             {
@@ -171,8 +170,6 @@ public class AdminViewExamsController {
             }
         });
     }
-
-    // ─── Table Cell ────────────────────────────────────────────────────────────
 
     private class ActionCell extends TableCell<Exam, Void> {
         private final Button btnEdit = new Button("Edit");

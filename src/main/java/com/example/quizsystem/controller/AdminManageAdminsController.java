@@ -154,8 +154,6 @@ public class AdminManageAdminsController {
         });
     }
 
-    // ─── Table Cells ───────────────────────────────────────────────────────────
-
     private class PasswordToggleCell extends TableCell<User, String> {
         private final Label lblPassword = new Label("••••••••");
         private final Button btnToggle = new Button("👁");

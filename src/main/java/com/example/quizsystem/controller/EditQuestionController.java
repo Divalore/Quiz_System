@@ -90,7 +90,7 @@ public class EditQuestionController {
         try {
             points = Integer.parseInt(pointsField.getText().trim());
         } catch (Exception e) {
-            // Default to 1 if invalid
+            
         }
 
         String sql = "UPDATE questions SET content=?, optionA=?, optionB=?, optionC=?, optionD=?, " +

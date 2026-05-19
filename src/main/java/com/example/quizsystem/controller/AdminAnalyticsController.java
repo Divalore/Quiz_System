@@ -29,7 +29,6 @@ public class AdminAnalyticsController {
     @FXML private PieChart performancePieChart;
     @FXML private BarChart<String, Number> subjectBarChart;
 
-    // Maps a display name to its database ID for the student filter
     private Map<String, Integer> studentIdMap = new HashMap<>();
 
     @FXML
@@ -37,8 +36,6 @@ public class AdminAnalyticsController {
         setupFilters();
         refreshAnalytics();
     }
-
-    // ─── Filter Setup ──────────────────────────────────────────────────────────
 
     private void setupFilters() {
         TreeSet<String> classes = new TreeSet<>();
@@ -108,8 +105,6 @@ public class AdminAnalyticsController {
         studentFilter.setValue("All Students");
     }
 
-    // ─── Analytics Refresh ─────────────────────────────────────────────────────
-
     private void refreshAnalytics() {
         String classVal = classFilter.getValue();
         String subjectVal = subjectFilter.getValue();
@@ -124,7 +119,7 @@ public class AdminAnalyticsController {
 
     private void loadSummaryStats(String classVal, String subjectVal, Integer studentId) {
         try (Connection conn = DatabaseManager.getConnection()) {
-            // Total exam attempts
+            
             String examSql = buildQuery(
                     "SELECT COUNT(*) FROM results r JOIN users u ON r.studentId = u.id JOIN exams e ON r.examId = e.id WHERE 1=1",
                     classVal, subjectVal, studentId
@@ -134,7 +129,6 @@ public class AdminAnalyticsController {
                 if (rs.next()) totalExamsLabel.setText(String.valueOf(rs.getInt(1)));
             }
 
-            // Total students
             String studentSql = "SELECT COUNT(*) FROM users WHERE role = 'STUDENT'";
             if (!"All Classes".equals(classVal)) studentSql += " AND className = ?";
             if (studentId != null) studentSql += " AND id = ?";
@@ -147,7 +141,6 @@ public class AdminAnalyticsController {
                 }
             }
 
-            // Average score percentage
             String avgSql = buildQuery(
                     "SELECT AVG(CAST(r.score AS DOUBLE) / r.totalQuestions * 100) " +
                     "FROM results r JOIN users u ON r.studentId = u.id JOIN exams e ON r.examId = e.id " +
@@ -229,8 +222,6 @@ public class AdminAnalyticsController {
         subjectBarChart.getData().clear();
         subjectBarChart.getData().add(series);
     }
-
-    // ─── Query Helpers ─────────────────────────────────────────────────────────
 
     private String buildQuery(String base, String classVal, String subjectVal, Integer studentId) {
         StringBuilder sb = new StringBuilder(base);

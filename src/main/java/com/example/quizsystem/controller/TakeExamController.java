@@ -53,11 +53,9 @@ public class TakeExamController {
     private Exam currentExam;
     private List<Question> questions = new ArrayList<>();
     private int currentQuestionIndex = 0;
-    private Map<Integer, String> studentAnswers = new HashMap<>(); // questionId -> answer letter or text
+    private Map<Integer, String> studentAnswers = new HashMap<>(); 
     private Timeline timer;
     private int timeRemainingSeconds;
-
-    // ─── Initialization ────────────────────────────────────────────────────────
 
     public void initExam(Exam exam) {
         this.currentExam = exam;
@@ -105,8 +103,6 @@ public class TakeExamController {
             e.printStackTrace();
         }
     }
-
-    // ─── Display ───────────────────────────────────────────────────────────────
 
     private void displayQuestion() {
         if (questions.isEmpty()) return;
@@ -184,8 +180,6 @@ public class TakeExamController {
         }
     }
 
-    // ─── Answer Handling ───────────────────────────────────────────────────────
-
     private void saveCurrentAnswer() {
         if (questions.isEmpty()) return;
 
@@ -207,8 +201,6 @@ public class TakeExamController {
         }
     }
 
-    // ─── Navigation Events ─────────────────────────────────────────────────────
-
     @FXML
     void handleNext(ActionEvent event) {
         saveCurrentAnswer();
@@ -221,7 +213,7 @@ public class TakeExamController {
                 currentQuestionIndex++;
                 displayQuestion();
             } else if (currentExam.isKahoot()) {
-                // Kahoot mode on a written final question
+                
                 nextBtn.setVisible(false);
                 submitBtn.setVisible(true);
             }
@@ -244,8 +236,6 @@ public class TakeExamController {
             displayQuestion();
         }
     }
-
-    // ─── Kahoot Feedback ───────────────────────────────────────────────────────
 
     private void showFeedback(Question q) {
         String selected = studentAnswers.get(q.getId());
@@ -293,8 +283,6 @@ public class TakeExamController {
         writtenAnswerArea.setDisable(!enabled);
     }
 
-    // ─── Timer ─────────────────────────────────────────────────────────────────
-
     private void startTimer() {
         updateTimerLabel();
         timer = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
@@ -324,8 +312,6 @@ public class TakeExamController {
         nextBtn.setDisable(true);
         prevBtn.setDisable(true);
     }
-
-    // ─── Submit ────────────────────────────────────────────────────────────────
 
     @FXML
     void handleSubmit(ActionEvent event) {

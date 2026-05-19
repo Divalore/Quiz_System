@@ -142,7 +142,7 @@ public class ManageQuestionsController {
         try {
             points = Integer.parseInt(pointsField.getText().trim());
         } catch (NumberFormatException e) {
-            // Use default value of 1
+            
         }
 
         Question q = new Question(0, currentExamId, content, optA, optB, optC, optD, correct, type, points);

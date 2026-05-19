@@ -158,7 +158,7 @@ public class AdminGradingController {
                 stmt.executeUpdate();
             }
         } else {
-            // Fallback for legacy data: find the most recent result for this student/exam
+            
             sql = "UPDATE results SET score = score + ? WHERE id = " +
                   "(SELECT id FROM results WHERE studentId = ? AND examId = ? ORDER BY timestamp DESC LIMIT 1)";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -213,8 +213,6 @@ public class AdminGradingController {
         statusLabel.setText(message);
         statusLabel.setStyle(success ? "-fx-text-fill: #10b981" : "-fx-text-fill: #ef4444");
     }
-
-    // ─── Inner Data Class ──────────────────────────────────────────────────────
 
     private static class PendingAnswer {
         int id, resultId, studentId, examId;

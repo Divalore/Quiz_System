@@ -40,8 +40,6 @@ public class StudentController {
         }
     }
 
-    // ─── Navigation ────────────────────────────────────────────────────────────
-
     private void setActiveButton(Button active) {
         if (btnTakeExam != null) btnTakeExam.getStyleClass().remove("nav-btn-active");
         if (btnViewResults != null) btnViewResults.getStyleClass().remove("nav-btn-active");
@@ -85,8 +83,6 @@ public class StudentController {
         setActiveButton(btnProfileSettings);
         loadFreshPane("profileSettingsPane", "/com/example/quizsystem/view/profile_settings.fxml");
     }
-
-    // ─── Exam Entry ────────────────────────────────────────────────────────────
 
     @FXML
     void openExam(ActionEvent event) {
@@ -153,8 +149,6 @@ public class StudentController {
 
         stage.setScene(scene);
     }
-
-    // ─── Logout ────────────────────────────────────────────────────────────────
 
     @FXML
     void handleLogout(ActionEvent event) {

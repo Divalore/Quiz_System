@@ -116,7 +116,6 @@ public class ProfileSettingsController {
 
             stmt.executeUpdate();
 
-            // Sync session object with the updated values
             currentUser.setFirstName(fname);
             currentUser.setLastName(lname);
             currentUser.setEmail(email);

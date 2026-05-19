@@ -24,11 +24,9 @@ import java.sql.ResultSet;
 
 public class AdminController {
 
-    // Layout
     @FXML private StackPane contentArea;
     @FXML private AnchorPane registerStudentPane;
 
-    // Registration form fields
     @FXML private TextField fNameField;
     @FXML private TextField lNameField;
     @FXML private TextField emailField;
@@ -47,7 +45,6 @@ public class AdminController {
     @FXML private Button submitRegisterBtn;
     @FXML private Label statusLabel;
 
-    // Navigation buttons
     @FXML private Button btnRegisterStudent;
     @FXML private Button btnCreateExam;
     @FXML private Button btnManageQuestions;
@@ -82,8 +79,6 @@ public class AdminController {
             });
         }
     }
-
-    // ─── Navigation ────────────────────────────────────────────────────────────
 
     private void setActiveButton(Button active) {
         Button[] navButtons = {
@@ -192,8 +187,6 @@ public class AdminController {
         loadOrShowPane("profileSettingsPane", "/com/example/quizsystem/view/profile_settings.fxml", true);
     }
 
-    // ─── Registration ──────────────────────────────────────────────────────────
-
     @FXML
     void registerStudent(ActionEvent event) {
         String fname = fNameField.getText().trim();
@@ -279,8 +272,6 @@ public class AdminController {
         statusLabel.setStyle("-fx-text-fill: #10b981");
     }
 
-    // ─── Logout ────────────────────────────────────────────────────────────────
-
     @FXML
     void handleLogout(ActionEvent event) {
         try {
@@ -291,6 +282,7 @@ public class AdminController {
             stage.setScene(scene);
             stage.setWidth(700);
             stage.setHeight(550);
+            stage.centerOnScreen();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -111,15 +111,11 @@ public class DatabaseManager {
         }
     }
 
-    /**
-     * Runs a SQL statement silently, ignoring errors (used for ALTER TABLE migrations
-     * where the column might already exist).
-     */
     private static void runSilently(Statement stmt, String sql) {
         try {
             stmt.execute(sql);
         } catch (SQLException ignored) {
-            // Column likely already exists — safe to ignore
+            
         }
     }
 }

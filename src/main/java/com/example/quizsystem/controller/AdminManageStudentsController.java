@@ -161,8 +161,6 @@ public class AdminManageStudentsController {
         });
     }
 
-    // ─── Table Cells ───────────────────────────────────────────────────────────
-
     private class PasswordToggleCell extends TableCell<User, String> {
         private final Label lblPassword = new Label("••••••••");
         private final Button btnToggle = new Button("👁");
@@ -204,8 +202,6 @@ public class AdminManageStudentsController {
             setGraphic(empty ? null : btnEdit);
         }
     }
-
-    // ─── Utility ───────────────────────────────────────────────────────────────
 
     private GridPane buildGrid(String[] labels, TextField[] fields) {
         GridPane grid = new GridPane();
